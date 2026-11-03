@@ -1,0 +1,740 @@
+/* ==========================================================================
+   Global Font System:
+   1) Marathi : Noto Sans Devanagari & Mukta
+   2) English : Inter
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@300;400;500;600;700;800;900&family=Mukta:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --font-marathi: 'Noto Sans Devanagari', 'Mukta', 'Devanagari', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-english: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-combined: 'Inter', 'Noto Sans Devanagari', 'Mukta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden !important;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden !important;
+  position: relative;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  box-sizing: border-box;
+  /* Dual-script stack: Inter for Latin/English, Noto Sans Devanagari for Marathi */
+  font-family: 'Inter', 'Noto Sans Devanagari', 'Mukta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden !important;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* Form elements inherit typography */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/* Explicit Marathi Elements */
+[lang='mr'],
+.lang-mr,
+.font-marathi,
+:lang(mr) {
+  font-family: 'Noto Sans Devanagari', 'Mukta', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+/* Explicit English Elements */
+[lang='en'],
+.lang-en,
+.font-english,
+:lang(en) {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+/* Monospace overrides for Voter IDs, EPIC, and tracking codes */
+code,
+kbd,
+samp,
+pre,
+.font-mono {
+  font-family: 'JetBrains Mono', 'Fira Code', Consolas, 'SF Mono', monospace;
+}
+
+/* ==========================================================================
+   Tactile 3D Buttons & Tabs System
+   ========================================================================== */
+.btn-3d-blue,
+.tab-btn-3d-blue {
+  background: linear-gradient(180deg, #3b82f6 0%, #2563eb 52%, #1d4ed8 100%) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  border-top: 1.5px solid rgba(255, 255, 255, 0.65) !important;
+  border-bottom: 3.5px solid #1743a4 !important;
+  box-shadow: 0 4px 14px -1px rgba(37, 99, 235, 0.55), 0 2px 4px rgba(0, 0, 0, 0.14), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.65) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.28) !important;
+  border-radius: 11px !important;
+  font-weight: 800 !important;
+  transform-style: preserve-3d;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  user-select: none;
+}
+
+.btn-3d-blue:hover,
+.tab-btn-3d-blue:hover {
+  transform: translateY(-2.5px) scale(1.02) !important;
+  box-shadow: 0 8px 24px -2px rgba(37, 99, 235, 0.7), 0 4px 8px rgba(0, 0, 0, 0.16), inset 0 1.5px 2px rgba(255, 255, 255, 0.85) !important;
+}
+
+.btn-3d-blue:active,
+.tab-btn-3d-blue:active {
+  transform: translateY(2px) scale(0.98) !important;
+  border-bottom: 1.5px solid #1743a4 !important;
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.4), inset 0 1px 3px rgba(0, 0, 0, 0.25) !important;
+}
+
+.btn-3d-inactive,
+.tab-btn-3d-inactive {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%) !important;
+  color: #475569 !important;
+  border: 1px solid #cbd5e1 !important;
+  border-bottom: 2.5px solid #94a3b8 !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05), inset 0 1px 1px #ffffff !important;
+  border-radius: 11px !important;
+  font-weight: 750 !important;
+  transform-style: preserve-3d;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  user-select: none;
+}
+
+.btn-3d-inactive:hover,
+.tab-btn-3d-inactive:hover {
+  transform: translateY(-2px) !important;
+  color: #1d4ed8 !important;
+  border-color: #93c5fd !important;
+  border-bottom-color: #60a5fa !important;
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.18), inset 0 1px 1px #ffffff !important;
+}
+
+.btn-3d-inactive:active,
+.tab-btn-3d-inactive:active {
+  transform: translateY(1.5px) !important;
+  border-bottom: 1.5px solid #94a3b8 !important;
+}
+
+/* ==========================================================================
+   Universal Responsive Design: Modals, Popups, Dropdowns & Data Grids
+   ========================================================================== */
+
+/* 1. Modal & Dialog Auto-Fit on All Screen Sizes */
+@media (max-width: 768px) {
+  /* Any fixed modal backdrop wrapper */
+  div[style*="position: fixed"],
+  div[style*="position: 'fixed'"] {
+    padding: 10px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Any modal dialog container */
+  div[style*="position: fixed"] > div[style*="borderRadius"],
+  div[style*="position: fixed"] > div[style*="border-radius"],
+  div[style*="position: 'fixed'"] > div[style*="borderRadius"],
+  div[style*="position: 'fixed'"] > div[style*="border-radius"] {
+    max-width: 100% !important;
+    width: 100% !important;
+    max-height: 92vh !important;
+    max-height: 92dvh !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    box-sizing: border-box !important;
+    margin: auto !important;
+  }
+}
+
+/* 2. Responsive Dropdowns & Inputs */
+select {
+  max-width: 100%;
+  box-sizing: border-box;
+  text-overflow: ellipsis;
+  background-color: #ffffff;
+}
+
+/* Safe font size on mobile to prevent iOS/Safari automatic unwanted zoom */
+@media (max-width: 768px) {
+  select,
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  input[type="number"],
+  input[type="tel"],
+  input[type="search"],
+  input[type="date"],
+  textarea {
+    font-size: 14.5px !important;
+    min-height: 40px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Listbox dropdown popups */
+  div[role="listbox"],
+  ul[role="listbox"] {
+    max-height: 220px !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+
+/* 3. Universal Table Horizontal Scroll Container & Page Zero-Overflow */
+div:has(> table),
+div[style*="overflowX: 'auto'"],
+div[style*="overflow-x: auto"],
+div[style*="overflowX: auto"],
+.table-responsive-wrapper {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  box-sizing: border-box !important;
+}
+
+/* Ensure workspaces, dashboards and main elements never overflow the viewport */
+main,
+section,
+article,
+header,
+.admin-main-workspace,
+.neta-main-body,
+.neta-dashboard-layout {
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  min-width: 0 !important;
+}
+
+/* Global media query to guarantee zero horizontal scroll on mobile & tablets */
+@media (max-width: 900px) {
+  html,
+  body,
+  #root {
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+
+  /* Any full-width card cannot exceed 100% */
+  .admin-kpi-grid,
+  .area-kpi-grid,
+  .geo-filter-grid {
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* 4. Touch Target Optimizations */
+@media (pointer: coarse) {
+  button,
+  select,
+  a {
+    min-height: 38px;
+  }
+}
+
+/* 5. Pill 3D Tabs & Responsive Filter Bars */
+.pill-3d-box {
+  padding: 8px 14px;
+  border-radius: 9px;
+  font-size: 12.5px;
+  font-weight: 750;
+  cursor: pointer;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #475569;
+  transition: all 0.18s ease;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.pill-3d-box.active {
+  background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%);
+  color: #ffffff;
+  border-color: #1d4ed8;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.35);
+}
+
+.pill-3d-box.inactive:hover {
+  background: #f1f5f9;
+  color: #1e293b;
+  border-color: #94a3b8;
+}
+
+.karyakarta-filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  background: #ffffff;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.karyakarta-pills-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.karyakarta-pills-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.karyakarta-pills-divider {
+  width: 1px;
+  height: 24px;
+  background: #e2e8f0;
+}
+
+.karyakarta-search-wrap {
+  min-width: 240px;
+  flex: 1;
+  max-width: 380px;
+}
+
+@media (max-width: 768px) {
+  .karyakarta-filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 10px;
+  }
+  .karyakarta-pills-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .karyakarta-pills-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    width: 100%;
+  }
+  .karyakarta-pills-row .pill-3d-box {
+    justify-content: center;
+    padding: 8px 6px;
+    font-size: 11px;
+    text-align: center;
+  }
+  .karyakarta-pills-divider {
+    display: none;
+  }
+  .karyakarta-search-wrap {
+    max-width: 100%;
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+/* Karyakarta Performance Roster: Desktop Table vs Phone Container Cards */
+.karyakarta-desktop-table {
+  display: block;
+}
+
+.karyakarta-mobile-cards {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .karyakarta-desktop-table {
+    display: none !important;
+  }
+  .karyakarta-mobile-cards {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    padding: 12px !important;
+  }
+}
+
+
+/* ==========================================================================
+   Universal Zero-Overflow & 100% Mobile Device Fit Guarantee
+   ========================================================================== */
+html,
+body,
+#root {
+  width: 100% !important;
+  max-width: 100vw !important;
+  overflow-x: hidden !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Admin Workspace Body Padding Responsive */
+.admin-main-workspace {
+  padding: 24px 28px;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow-x: hidden !important;
+  min-width: 0 !important;
+}
+
+@media (max-width: 768px) {
+  .admin-main-workspace {
+    padding: 10px 8px !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+  .admin-card-responsive {
+    padding: 12px 10px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+}
+@media (max-width: 480px) {
+  .admin-main-workspace {
+    padding: 8px 6px !important;
+  }
+}
+
+/* Project Create Form Mobile & Geography Responsive Styles */
+.project-create-card {
+  background: #ffffff;
+  border: 1px solid #e3e8ef;
+  border-radius: 14px;
+  padding: 24px;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  overflow-x: hidden !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+@media (max-width: 640px) {
+  .project-create-card {
+    padding: 14px 10px !important;
+    border-radius: 10px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* Header & Map Button */
+.project-create-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 18px;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.project-header-map-btn {
+  background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+  color: #ffffff !important;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+  transition: all 0.15s ease;
+  box-sizing: border-box !important;
+  max-width: 100% !important;
+}
+
+.project-header-map-badge {
+  background: rgba(255, 255, 255, 0.22);
+  padding: 2px 7px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #ffffff !important;
+}
+
+@media (max-width: 640px) {
+  .project-create-header {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+    margin-bottom: 14px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .project-header-map-btn {
+    width: 100% !important;
+    padding: 10px 14px !important;
+    font-size: 13.5px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+}
+
+/* Scope & Election Selector Responsive Grid */
+.project-election-categories {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  margin-bottom: 14px;
+  scrollbar-width: thin;
+}
+
+.project-election-cat-btn {
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #334155;
+  font-size: 12.5px;
+  font-weight: 650;
+  cursor: pointer;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+}
+
+.project-election-cat-btn:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+}
+
+.project-election-cat-btn.active {
+  background: #2563eb;
+  color: #ffffff;
+  border-color: #2563eb;
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+}
+
+.project-geo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 12px;
+  max-width: 100% !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.project-geo-wide {
+  grid-column: span 1;
+}
+
+.project-geo-card {
+  text-align: left;
+  padding: 12px 14px;
+  min-height: unset;
+  border: 1.5px solid #d7deea;
+  border-radius: 11px;
+  background: #ffffff;
+  cursor: pointer;
+  color: #17253c;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  position: relative;
+}
+
+.project-geo-card:hover {
+  border-color: #60a5fa;
+  background: #f8fafc;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08);
+}
+
+.project-geo-card.selected {
+  border: 2px solid #2563eb;
+  background: #f0f7ff;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.18);
+}
+
+.project-geo-card-top {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  width: 100%;
+  min-width: 0;
+}
+
+.project-geo-radio {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 2px solid #94a3b8;
+  margin-top: 2px;
+  transition: all 0.15s ease;
+}
+
+.project-geo-radio.selected {
+  border: 5px solid #2563eb;
+  background: #ffffff;
+}
+
+.project-geo-title {
+  font-size: 14px;
+  font-weight: 750;
+  line-height: 1.35;
+  color: #0f172a;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.project-geo-meta-box {
+  margin-top: 10px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.project-geo-card.selected .project-geo-meta-box {
+  background: #ffffff;
+  border-color: #bfdbfe;
+}
+
+.project-geo-meta-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  line-height: 1.3;
+}
+
+.project-geo-meta-label {
+  font-weight: 700;
+  color: #475569;
+  flex-shrink: 0;
+}
+
+.project-geo-meta-value {
+  color: #1e293b;
+  font-weight: 550;
+}
+
+@media (max-width: 900px) {
+  .project-geo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .project-geo-card {
+    padding: 10px 12px;
+    min-height: 56px;
+  }
+  .project-geo-wide {
+    grid-column: span 2;
+  }
+}
+
+/* Mobile Phone View (< 640px): 1-Column Guaranteed 100% Device Fit */
+@media (max-width: 640px) {
+  .project-geo-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 8px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .project-geo-wide {
+    grid-column: span 1 !important;
+  }
+  .project-geo-card {
+    padding: 10px 12px !important;
+    min-height: 44px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+  .project-geo-title {
+    font-size: 13px !important;
+    word-break: break-word !important;
+  }
+  .project-geo-desc {
+    display: none !important;
+  }
+}
+
+
